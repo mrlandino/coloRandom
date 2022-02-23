@@ -35,7 +35,6 @@ The applicaiton has been deployed to gitHub pages, and can be accessed [here.](h
 * A user should be able to unlock colors and continue updating the colors with the New Palette button as expected
 * When a saved palette’s delete button is clicked, that palette is removed from the page.
 
-
 ### Possible Future Extensions
 
 *    
