@@ -1,0 +1,165 @@
+/* div {
+  border: dotted 3px blue;
+} */
+
+
+body {
+  /* border: solid 3px yellow; */
+  display: flex;
+  margin: 0px;
+  height: 100vh;
+  min-height: 800px;
+  width: 100vw;
+  min-width: 1200px;
+  overflow: hidden;
+  font-family: Chalkduster, fantasy;
+}
+
+main {
+  /* border: solid 2px magenta; */
+  border: solid 2px black;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: grey;
+  /* background: linear-gradient(319deg, #ff1493 0%, #0000ff 37%, #ff8c00 100%); */
+}
+
+.title-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 33%;
+}
+
+.display-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 33%;
+  width: 95%;
+  background-color: rgba(255, 255, 255, .40);
+  backdrop-filter: blur(5px);
+  border-radius: 30px;
+  box-shadow: 7px 5px 40px black;
+}
+
+.button-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 33%;
+}
+
+.saved-display-container {
+  border: solid 2px black;
+  width: 20%;
+  height: 100%;
+  background-color: #bebebe;
+}
+
+.title-saved-palette-container {
+  height: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+}
+
+.saved-palette {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 20px;
+}
+
+.title-small {
+  font-size: 35px;
+  text-align: center;
+}
+
+.swatch-display-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80%;
+  width: 100%;
+}
+
+.swatch-info-container {
+    display: flex;
+    justify-content: center;
+    height: 20%;
+    width: 100%;
+}
+
+
+.swatch-small {
+  border: solid 3px blue;
+  border-radius: 5px;
+  height: 30px;
+  width: 30px;
+}
+
+.swatch-large {
+  border-radius: 10px;
+  box-shadow: 5px 5px 10px black;
+  height: 150px;
+  width: 150px;
+  background-color: magenta;
+}
+
+.hex-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.lock-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon {
+  height: 30px;
+  width: 30px;
+}
+
+.title-large {
+  font-size: 120px;
+  background: linear-gradient(319deg, #ff1493 0%, #0000ff 37%, #ff8c00 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 20%;
+}
+
+.button {
+  font-family: Chalkduster, fantasy;
+  font-size: 30px;
+  border-radius: 30px;
+  height: 20%;
+  width: 20%;
+}
+
+.button:hover {
+  box-shadow: 7px 7px 20px black;
+  color: white;
+  background-color: #ff1493;
+  background-image: linear-gradient(319deg, #ff1493 0%, #0000ff 37%, #ff8c00 100%);
+  background-blend-mode: lighten;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
