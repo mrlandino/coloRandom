@@ -62,7 +62,8 @@
             <label class="hex-code">#123DAF</label>
           </section>
           <section class="container lock-container">
-            <img src="./assets/unlock.png">
+            <img class="unlock" src="./assets/unlock.png" alt="unlocked">
+            <img class="lock hidden" src="./assets/lock.png" alt="locked">
           </section>
         </section>
       </section>
@@ -85,6 +86,20 @@
         <button class ="save-button">Save Palette</button>
     </section>
   </main>
-  <section class="container saved-palette-container"></section>
+  <section class="container saved-display-container">
+    <section class="container title-saved-palette-container">
+      <label class="title small">Saved Palettes</label>
+    </section>
+    <section class="container saved-palettes-container">
+      <section class="container saved-palette" data-palette-number="0">
+        <section class="swatch small" data-index-number="0"></section>
+        <section class="swatch small" data-index-number="1"></section>
+        <section class="swatch small" data-index-number="2"></section>
+        <section class="swatch small" data-index-number="3"></section>
+        <section class="swatch small" data-index-number="4"></section>
+        <img src="./assets/trashcan.ico" alt="trash can">
+      </section>
+    </section>
+  </section>
 </body>
 </html>
