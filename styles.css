@@ -105,8 +105,8 @@ main {
 }
 
 .swatch-large {
-  border: solid 3px blue;
   border-radius: 10px;
+  box-shadow: 5px 5px 10px black;
   height: 150px;
   width: 150px;
   background-color: magenta;
