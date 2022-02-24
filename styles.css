@@ -160,6 +160,10 @@ main {
   cursor: pointer;
 }
 
+.hex-code {
+    text-transform: uppercase;
+}
+
 .hidden {
   display: none;
 }
