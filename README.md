@@ -24,7 +24,7 @@ The applicaiton has been deployed to gitHub pages, and can be accessed [here.](h
 * CSS
 * JavaScript
 
-## Applicaiton Features
+## Application Features
 
 * Every time the user clicks the New Palette button, a new set of colors is created and displayed.
 * When the user clicks Save Palette, the saved palette should show up in the saved palette side of the UI.
