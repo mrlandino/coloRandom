@@ -115,7 +115,9 @@ main {
 .hex-container {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-end;
+  margin-right:5px;
+  margin-bottom: 10px;
 }
 
 .lock-container {

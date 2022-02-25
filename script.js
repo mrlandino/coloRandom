@@ -9,6 +9,9 @@ var mainPalette = {
         this.currentPalette.refresh();
         this.display()
     },
+    savePaletteButton() {
+      console.log("save works")
+    },
     display() {
         var cards = '';
         for (i = 0; i < this.currentPalette.palette.length; i++) {
@@ -19,17 +22,44 @@ var mainPalette = {
                 <div class ="container swatch-info-container">
                 <div class="container hex-container">
                     <label class="hex-code">${this.currentPalette.palette[i].hexCode}</label>
-                </div>
+                </div>`
+            if(!this.currentPalette.palette[i].locked) {
+              cards += `
                 <div class="container lock-container">
-                    <img class="icon unlock" src="./assets/unlock.png" alt="unlocked">
-                    <img class="icon lock hidden" src="./assets/lock.png" alt="locked">
+                    <img class="icon unlock" src="./assets/unlock.svg" alt="unlocked">
+                    <img class="icon lock hidden" src="./assets/lock.svg" alt="locked">
                 </div>
                 </div>
             </section>`
+          } else {
+            cards += `
+                <div class="container lock-container">
+                    <img class="icon unlock hidden" src="./assets/unlock.svg" alt="unlocked">
+                    <img class="icon lock" src="./assets/lock.svg" alt="locked">
+                </div>
+                </div>
+            </section>`
+          }
         }
         this.displayContainer.innerHTML = cards;
     }
-    
+
 }
 
 mainPalette.createNew()
+document.addEventListener('click', function(e) {
+  // console.log(e.target.classList.contains("lock"));
+  if(e.target.alt === "unlocked" || e.target.alt === "locked") {
+    var lockId = e.target.parentNode.parentNode.parentNode.dataset.indexNumber;
+    mainPalette.currentPalette.toggleLock(lockId);
+    mainPalette.display();
+  } else if(e.target.id === "newPalette") {
+    mainPalette.newPaletteButton();
+  } else if(e.target.id === "savePalette"){
+    mainPalette.savePaletteButton();
+  }
+
+
+
+
+})
