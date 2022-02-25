@@ -1,17 +1,21 @@
 var mainPalette = {
     displayContainer: document.querySelector('.display-container'),
     currentPalette: '',
+
     createNew() {
         this.currentPalette = new Palette();
         this.display()
     },
+
     newPaletteButton() {
         this.currentPalette.refresh();
         this.display()
     },
+
     savePaletteButton() {
       console.log("save works")
     },
+
     display() {
         var cards = '';
         for (i = 0; i < this.currentPalette.palette.length; i++) {
@@ -43,13 +47,12 @@ var mainPalette = {
         }
         this.displayContainer.innerHTML = cards;
     }
-
 }
 
-mainPalette.createNew()
+window.addEventListener('load', mainPalette.createNew());
+
 document.addEventListener('click', function(e) {
-  // console.log(e.target.classList.contains("lock"));
-  if(e.target.alt === "unlocked" || e.target.alt === "locked") {
+  if(e.target.classList.contains("unlock") || e.target.classList.contains("lock")) {
     var lockId = e.target.parentNode.parentNode.parentNode.dataset.indexNumber;
     mainPalette.currentPalette.toggleLock(lockId);
     mainPalette.display();
@@ -58,8 +61,4 @@ document.addEventListener('click', function(e) {
   } else if(e.target.id === "savePalette"){
     mainPalette.savePaletteButton();
   }
-
-
-
-
 })
