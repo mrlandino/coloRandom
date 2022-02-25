@@ -1,5 +1,7 @@
 var mainPalette = {
   displayContainer: document.querySelector('.display-container'),
+  buttonContainer: document.querySelector('.button-container'),
+  savedPaletteContainer: document.querySelector('.saved-palettes-container'),
   currentPalette: '',
 
   createNew() {
@@ -25,7 +27,7 @@ var mainPalette = {
       unlock = "hidden"
       lock = ""
     }
-      cards += `<section class="card large" data-index-number="${i}">
+      cards += `<section class="card large" >
                 <div class= "container swatch-display-container">
                 <section class ="swatch-large" style="background-color:${this.currentPalette.palette[i].hexCode};"></section>
                 </div>
@@ -34,27 +36,30 @@ var mainPalette = {
                     <label class="hex-code">${this.currentPalette.palette[i].hexCode}</label>
                 </div>
                 <div class="container lock-container">
-                  <img class="icon unlock ${unlock}" src="./assets/unlock.svg" alt="unlocked">
-                  <img class="icon lock ${lock}" src="./assets/lock.svg" alt="locked">
+                  <img class="icon unlock ${unlock}" data-index-number="${i}" src="./assets/unlock.svg" alt="unlocked">
+                  <img class="icon lock ${lock}" data-index-number="${i}" src="./assets/lock.svg" alt="locked">
                 </div>
                 </div>
             </section>`
     }
-    console.log(cards)
     this.displayContainer.innerHTML = cards
   }
 }
 
 window.addEventListener('load', mainPalette.createNew());
 
-document.addEventListener('click', function(e) {
+mainPalette.displayContainer.addEventListener('click', function(e) {
   if(e.target.classList.contains("unlock") || e.target.classList.contains("lock")) {
-    var lockId = e.target.parentNode.parentNode.parentNode.dataset.indexNumber;
+    var lockId = e.target.dataset.indexNumber;
     mainPalette.currentPalette.toggleLock(lockId);
     mainPalette.display();
-  } else if(e.target.id === "newPalette") {
+  } 
+})
+
+mainPalette.buttonContainer.addEventListener('click', function (e) {
+  if (e.target.id === "newPalette") {
     mainPalette.newPaletteButton();
-  } else if(e.target.id === "savePalette"){
+  } else if (e.target.id === "savePalette") {
     mainPalette.savePaletteButton();
   }
 })
