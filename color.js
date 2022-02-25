@@ -18,4 +18,3 @@ class Color {
 }
 
 var thisColor = new Color();
-console.log(thisColor)
