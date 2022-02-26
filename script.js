@@ -7,12 +7,12 @@ var mainPalette = {
 
   createNew() {
       this.currentPalette = new Palette();
-      this.display()
+      this.displayMain()
   },
 
   newPaletteButton() {
       this.currentPalette.refresh();
-      this.display()
+      this.displayMain()
   },
 
   resetLocks() {
@@ -22,12 +22,32 @@ var mainPalette = {
   },
   
   savePaletteButton() {
-    this.savedPalettes.push(this.currentPalette);
+    if (this.savedPalettes.length = 8) {
+      this.savedPalettes.pop()
+    }
+    this.savedPalettes.unshift(this.currentPalette);
     this.resetLocks();
     this.createNew();
+    this.displaySaved();
   },
 
-  display() {
+  displaySaved() {
+    var smallPalettes = '';
+    console.log(this.savedPalettes)
+    this.savedPalettes.forEach((object) =>{
+     smallPalettes += `<section class="container saved-palette" data-palette-number="${object.id}">
+        <section class="swatch-small" style="background-color:${object.palette[0].hexCode};" ></section>
+        <section class="swatch-small" style="background-color:${object.palette[1].hexCode};" ></section>
+        <section class="swatch-small" style="background-color:${object.palette[2].hexCode};" ></section>
+        <section class="swatch-small" style="background-color:${object.palette[3].hexCode};" ></section>
+        <section class="swatch-small" style="background-color:${object.palette[4].hexCode};" ></section>
+        <img class="icon trash" src="./assets/trashcan.svg" alt="trash can">
+      </section>`
+    })
+    this.savedPaletteContainer.innerHTML = smallPalettes;
+  },
+
+  displayMain() {
     var cards = '';
     for (i = 0; i < this.currentPalette.palette.length; i++) {
       var unlock = ""
@@ -51,7 +71,7 @@ var mainPalette = {
                 </div>
             </section>`
     }
-    this.displayContainer.innerHTML = cards
+    this.displayContainer.innerHTML = cards;
   }
 }
 
@@ -66,7 +86,7 @@ mainPalette.displayContainer.addEventListener('click', function(e) {
   if(e.target.classList.contains("unlock") || e.target.classList.contains("lock")) {
     var lockId = e.target.dataset.indexNumber;
     mainPalette.currentPalette.toggleLock(lockId);
-    mainPalette.display();
+    mainPalette.displayMain();
   } 
 })
 

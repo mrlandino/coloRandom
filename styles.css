@@ -94,10 +94,10 @@ main {
 }
 
 .swatch-small {
-  border: solid 3px blue;
   border-radius: 5px;
   height: 30px;
   width: 30px;
+  box-shadow: 1px 1px 3px black;
 }
 
 .swatch-large {
