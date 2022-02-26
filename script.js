@@ -3,6 +3,7 @@ var mainPalette = {
   buttonContainer: document.querySelector('.button-container'),
   savedPaletteContainer: document.querySelector('.saved-palettes-container'),
   currentPalette: '',
+  savedPalettes: [],
 
   createNew() {
       this.currentPalette = new Palette();
@@ -14,8 +15,16 @@ var mainPalette = {
       this.display()
   },
 
+  resetLocks() {
+    this.currentPalette.palette.forEach((color) => {
+      color.locked = false;
+    })
+  },
+  
   savePaletteButton() {
-    console.log("save works")
+    this.savedPalettes.push(this.currentPalette);
+    this.resetLocks();
+    this.createNew();
   },
 
   display() {
@@ -45,6 +54,11 @@ var mainPalette = {
     this.displayContainer.innerHTML = cards
   }
 }
+
+var savedPalettes = [];
+
+
+
 
 window.addEventListener('load', mainPalette.createNew());
 
