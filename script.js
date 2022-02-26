@@ -38,28 +38,16 @@ var mainPalette = {
 
   displaySaved() {
     var smallPalettes = '';
-    console.log(this.savedPalettes.length);
-    for (var i = 0; i < this.savedPalettes.length; i++) {
-      console.log(this.savedPalettes);
-      smallPalettes += `<section class="container saved-palette" data-palette-number="${i}">
-        <section class="swatch-small" style="background-color:${this.savedPalettes[i].palette[0].hexCode};" ></section>
-        <section class="swatch-small" style="background-color:${this.savedPalettes[i].palette[1].hexCode};" ></section>
-        <section class="swatch-small" style="background-color:${this.savedPalettes[i].palette[2].hexCode};" ></section>
-        <section class="swatch-small" style="background-color:${this.savedPalettes[i].palette[3].hexCode};" ></section>
-        <section class="swatch-small" style="background-color:${this.savedPalettes[i].palette[4].hexCode};" ></section>
+    this.savedPalettes.forEach((object, index) =>{
+     smallPalettes += `<section class="container saved-palette" data-palette-number="${index}">
+        <section class="swatch-small" style="background-color:${object.palette[0].hexCode};" ></section>
+        <section class="swatch-small" style="background-color:${object.palette[1].hexCode};" ></section>
+        <section class="swatch-small" style="background-color:${object.palette[2].hexCode};" ></section>
+        <section class="swatch-small" style="background-color:${object.palette[3].hexCode};" ></section>
+        <section class="swatch-small" style="background-color:${object.palette[4].hexCode};" ></section>
         <img class="icon trash" src="./assets/trashcan.svg" alt="trash can">
       </section>`
-    }
-    // this.savedPalettes.forEach((object) =>{
-    //  smallPalettes += `<section class="container saved-palette" data-palette-number="${object.id}">
-    //     <section class="swatch-small" style="background-color:${object.palette[0].hexCode};" ></section>
-    //     <section class="swatch-small" style="background-color:${object.palette[1].hexCode};" ></section>
-    //     <section class="swatch-small" style="background-color:${object.palette[2].hexCode};" ></section>
-    //     <section class="swatch-small" style="background-color:${object.palette[3].hexCode};" ></section>
-    //     <section class="swatch-small" style="background-color:${object.palette[4].hexCode};" ></section>
-    //     <img class="icon trash" src="./assets/trashcan.svg" alt="trash can">
-    //   </section>`
-    // })
+    })
     this.savedPaletteContainer.innerHTML = smallPalettes;
   },
 
