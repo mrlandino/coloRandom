@@ -5,25 +5,14 @@ var mainPalette = {
   currentPalette: '',
   savedPalettes: [],
 
-  createNew() {
-      this.currentPalette = new Palette();
-      this.displayMain()
-  },
-
   newPaletteButton() {
       this.currentPalette.refresh();
-      this.displayMain()
+      this.displayMain();
   },
 
-  resetLocks() {
-    this.currentPalette.palette.forEach((color) => {
-      color.locked = false;
-    })
-  },
-  
   savePaletteButton() {
     if (this.savedPalettes.length === 8) {
-      this.savedPalettes.pop()
+      this.savedPalettes.pop();
     }
     this.savedPalettes.unshift(this.currentPalette);
     this.resetLocks();
@@ -31,9 +20,20 @@ var mainPalette = {
     this.displaySaved();
   },
 
+  createNew() {
+      this.currentPalette = new Palette();
+      this.displayMain();
+  },
+
+  resetLocks() {
+    this.currentPalette.palette.forEach((color) => {
+      color.locked = false;
+    });
+  },
+  
   deletePalette(paletteId) {
-    this.savedPalettes.splice(paletteId, 1)
-    this.displaySaved()
+    this.savedPalettes.splice(paletteId, 1);
+    this.displaySaved();
   },
 
   displaySaved() {
@@ -47,18 +47,18 @@ var mainPalette = {
         <section class="swatch-small" style="background-color:${object.palette[4].hexCode};" ></section>
         <img class="icon trash" src="./assets/trashcan.svg" alt="trash can">
       </section>`
-    })
+    });
     this.savedPaletteContainer.innerHTML = smallPalettes;
   },
 
   displayMain() {
     var cards = '';
     for (i = 0; i < this.currentPalette.palette.length; i++) {
-      var unlock = ""
-      var lock = "hidden"
+      var unlock = "";
+      var lock = "hidden";
     if (this.currentPalette.palette[i].locked) {
-      unlock = "hidden"
-      lock = ""
+      unlock = "hidden";
+      lock = "";
     }
       cards += `<section class="card large" >
                 <div class= "container swatch-display-container">
@@ -78,11 +78,6 @@ var mainPalette = {
     this.displayContainer.innerHTML = cards;
   }
 }
-
-var savedPalettes = [];
-
-
-
 
 window.addEventListener('load', mainPalette.createNew());
 
