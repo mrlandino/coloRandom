@@ -22,7 +22,7 @@ var mainPalette = {
   },
   
   savePaletteButton() {
-    if (this.savedPalettes.length = 8) {
+    if (this.savedPalettes.length === 8) {
       this.savedPalettes.pop()
     }
     this.savedPalettes.unshift(this.currentPalette);
@@ -31,19 +31,35 @@ var mainPalette = {
     this.displaySaved();
   },
 
+  deletePalette(paletteId) {
+    this.savedPalettes.splice(paletteId, 1)
+    this.displaySaved()
+  },
+
   displaySaved() {
     var smallPalettes = '';
-    console.log(this.savedPalettes)
-    this.savedPalettes.forEach((object) =>{
-     smallPalettes += `<section class="container saved-palette" data-palette-number="${object.id}">
-        <section class="swatch-small" style="background-color:${object.palette[0].hexCode};" ></section>
-        <section class="swatch-small" style="background-color:${object.palette[1].hexCode};" ></section>
-        <section class="swatch-small" style="background-color:${object.palette[2].hexCode};" ></section>
-        <section class="swatch-small" style="background-color:${object.palette[3].hexCode};" ></section>
-        <section class="swatch-small" style="background-color:${object.palette[4].hexCode};" ></section>
+    console.log(this.savedPalettes.length);
+    for (var i = 0; i < this.savedPalettes.length; i++) {
+      console.log(this.savedPalettes);
+      smallPalettes += `<section class="container saved-palette" data-palette-number="${i}">
+        <section class="swatch-small" style="background-color:${this.savedPalettes[i].palette[0].hexCode};" ></section>
+        <section class="swatch-small" style="background-color:${this.savedPalettes[i].palette[1].hexCode};" ></section>
+        <section class="swatch-small" style="background-color:${this.savedPalettes[i].palette[2].hexCode};" ></section>
+        <section class="swatch-small" style="background-color:${this.savedPalettes[i].palette[3].hexCode};" ></section>
+        <section class="swatch-small" style="background-color:${this.savedPalettes[i].palette[4].hexCode};" ></section>
         <img class="icon trash" src="./assets/trashcan.svg" alt="trash can">
       </section>`
-    })
+    }
+    // this.savedPalettes.forEach((object) =>{
+    //  smallPalettes += `<section class="container saved-palette" data-palette-number="${object.id}">
+    //     <section class="swatch-small" style="background-color:${object.palette[0].hexCode};" ></section>
+    //     <section class="swatch-small" style="background-color:${object.palette[1].hexCode};" ></section>
+    //     <section class="swatch-small" style="background-color:${object.palette[2].hexCode};" ></section>
+    //     <section class="swatch-small" style="background-color:${object.palette[3].hexCode};" ></section>
+    //     <section class="swatch-small" style="background-color:${object.palette[4].hexCode};" ></section>
+    //     <img class="icon trash" src="./assets/trashcan.svg" alt="trash can">
+    //   </section>`
+    // })
     this.savedPaletteContainer.innerHTML = smallPalettes;
   },
 
@@ -96,4 +112,8 @@ mainPalette.buttonContainer.addEventListener('click', function (e) {
   } else if (e.target.id === "savePalette") {
     mainPalette.savePaletteButton();
   }
+})
+
+mainPalette.savedPaletteContainer.addEventListener('click', function (e) {
+  mainPalette.deletePalette(e.target.parentNode.dataset.paletteNumber);
 })
