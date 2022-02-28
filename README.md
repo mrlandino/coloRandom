@@ -26,19 +26,21 @@ The applicaiton has been deployed to gitHub pages, and can be accessed [here.](h
 
 ## Application Features
 
-* Every time the user clicks the New Palette button, a new set of colors is created and displayed.
-* When the user clicks Save Palette, the saved palette should show up in the saved palette side of the UI.
-* Each saved palette should be rendered with a button to delete the palette (you won’t build out this functionality until a later iteration)
-* A new Palette should automatically be created and displayed in the main part of the app.
-* A user should be able to click a color in the Palette and lock it.
-* When the New Palette button is clicked, all the colors update as expected, except for any colors that are locked
-* A user should be able to unlock colors and continue updating the colors with the New Palette button as expected
+![New page](https://user-images.githubusercontent.com/94997199/156063700-1d7123f6-5d5a-4650-96a0-e3405ad6d638.png)
+* On page load, and when a user clicks the New Palette button, a new set of colors is created and displayed.
+
+![New Palette](https://user-images.githubusercontent.com/94997199/156063710-50d51034-b613-49e3-ad1d-94b39a9574e3.png)
+* When a user clicks the New Palette button, a new set of colors is created and displayed.
+    * The user can click a lock icon under each color in the Palette and lock it.
+    * When the New Palette button is clicked, all the colors update as expected, except for any colors that are locked.
+
+![Saved Palette](https://user-images.githubusercontent.com/94997199/156063713-d1fef7af-dc43-4df4-8d77-24dfbbc85ffc.png)
+* When a user clicks Save Palette, the saved palette shows up in the saved palette side of the UI, and a new palette is displayed on the main section.
+    * Each saved palette is rendered with a trash icon to delete the palette.
+
+![Deleted Palette](https://user-images.githubusercontent.com/94997199/156063719-7e4055cb-9226-419f-9a6a-e67067ef209e.png)
 * When a saved palette’s delete button is clicked, that palette is removed from the page.
-
-### Possible Future Extensions
-
-*    
-*  
+ 
 
 ### Set Up
 
@@ -50,4 +52,4 @@ The applicaiton has been deployed to gitHub pages, and can be accessed [here.](h
 
 * [Trello Board](https://trello.com/b/5f7bOsJP)
 * [Daily Standup log](https://docs.google.com/spreadsheets/d/1AqghO_LYRzL5CAJPUYhsFuCuD4UwMjul1ma0CrAwEGg/edit?usp=sharing)
-* [Wireframe](https://excalidraw.com/#json=vjMpAuR0qkpfWWc3EGIX9,XgPnvfgffnw4x66PR7i0BQ)
+* [Wireframe](https://excalidraw.com/#json=pgxUenA_sOdIp0n8cQWSQ,9tbZIlB88-DtRD8S-AF-Kg)
