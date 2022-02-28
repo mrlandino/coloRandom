@@ -3,29 +3,62 @@ var mainPalette = {
   buttonContainer: document.querySelector('.button-container'),
   savedPaletteContainer: document.querySelector('.saved-palettes-container'),
   currentPalette: '',
-
-  createNew() {
-      this.currentPalette = new Palette();
-      this.display()
-  },
+  savedPalettes: [],
 
   newPaletteButton() {
       this.currentPalette.refresh();
-      this.display()
+      this.displayMain();
   },
 
   savePaletteButton() {
-    console.log("save works")
+    if (this.savedPalettes.length === 8) {
+      this.savedPalettes.pop();
+    }
+    this.savedPalettes.unshift(this.currentPalette);
+    this.resetLocks();
+    this.createNew();
+    this.displaySaved();
   },
 
-  display() {
+  createNew() {
+      this.currentPalette = new Palette();
+      this.displayMain();
+  },
+
+  resetLocks() {
+    this.currentPalette.palette.forEach((color) => {
+      color.locked = false;
+    });
+  },
+  
+  deletePalette(paletteId) {
+    this.savedPalettes.splice(paletteId, 1);
+    this.displaySaved();
+  },
+
+  displaySaved() {
+    var smallPalettes = '';
+    this.savedPalettes.forEach((object, index) =>{
+     smallPalettes += `<section class="container saved-palette" data-palette-number="${index}">
+        <section class="swatch-small" style="background-color:${object.palette[0].hexCode};" ></section>
+        <section class="swatch-small" style="background-color:${object.palette[1].hexCode};" ></section>
+        <section class="swatch-small" style="background-color:${object.palette[2].hexCode};" ></section>
+        <section class="swatch-small" style="background-color:${object.palette[3].hexCode};" ></section>
+        <section class="swatch-small" style="background-color:${object.palette[4].hexCode};" ></section>
+        <img class="icon trash" src="./assets/trashcan.svg" alt="trash can">
+      </section>`
+    });
+    this.savedPaletteContainer.innerHTML = smallPalettes;
+  },
+
+  displayMain() {
     var cards = '';
     for (i = 0; i < this.currentPalette.palette.length; i++) {
-      var unlock = ""
-      var lock = "hidden"
+      var unlock = "";
+      var lock = "hidden";
     if (this.currentPalette.palette[i].locked) {
-      unlock = "hidden"
-      lock = ""
+      unlock = "hidden";
+      lock = "";
     }
       cards += `<section class="card large" >
                 <div class= "container swatch-display-container">
@@ -42,7 +75,7 @@ var mainPalette = {
                 </div>
             </section>`
     }
-    this.displayContainer.innerHTML = cards
+    this.displayContainer.innerHTML = cards;
   }
 }
 
@@ -52,7 +85,7 @@ mainPalette.displayContainer.addEventListener('click', function(e) {
   if(e.target.classList.contains("unlock") || e.target.classList.contains("lock")) {
     var lockId = e.target.dataset.indexNumber;
     mainPalette.currentPalette.toggleLock(lockId);
-    mainPalette.display();
+    mainPalette.displayMain();
   } 
 })
 
@@ -62,4 +95,8 @@ mainPalette.buttonContainer.addEventListener('click', function (e) {
   } else if (e.target.id === "savePalette") {
     mainPalette.savePaletteButton();
   }
+})
+
+mainPalette.savedPaletteContainer.addEventListener('click', function (e) {
+  mainPalette.deletePalette(e.target.parentNode.dataset.paletteNumber);
 })
