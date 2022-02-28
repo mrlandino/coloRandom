@@ -10,7 +10,7 @@ The applicaiton has been deployed to gitHub pages, and can be accessed [here.](h
 
 ### Contributors
 * [Eli Davidson](https://github.com/elleshadow)
-* [Ross Landoino](https://github.com/mrlandino)
+* [Ross Landino](https://github.com/mrlandino)
 * [Josh Mallery](https://github.com/JoshMallery)
 ## Learning Goals
 1. Write semantic HTML and efficient CSS to form a usable UI
